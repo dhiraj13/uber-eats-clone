@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ScrollView, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { Divider } from '@rneui/base'
 
 import Categories from '../components/Categories'
 import HeaderTabs from '../components/HeaderTabs'
@@ -8,6 +9,7 @@ import RestaurantItems from '../components/RestaurantItems'
 import SearchBar from '../components/SearchBar'
 import { localRestaurants } from '../db/localRestaurants'
 import config from '../config'
+import BottomTabs from '../components/BottomTabs'
 
 export default function Home() {
   const [restaurantData, setRestaurantData] = useState(localRestaurants)
@@ -50,6 +52,8 @@ export default function Home() {
           <RestaurantItems restaurantData={restaurantData} />
         </ScrollView>
       </ScrollView>
+      <Divider width={1} />
+      <BottomTabs />
     </SafeAreaView>
   )
 }
