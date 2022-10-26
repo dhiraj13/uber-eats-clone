@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { ScrollView, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import { Divider } from '@rneui/base'
 
 import config from '../config'
@@ -41,7 +40,7 @@ export default function Home() {
   }, [city, activeTab])
 
   return (
-    <SafeAreaView style={{ backgroundColor: '#eee', flex: 1 }}>
+    <>
       <View style={{ backgroundColor: 'white', padding: 15 }}>
         <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
         <SearchBar cityHandler={setCity} />
@@ -54,6 +53,6 @@ export default function Home() {
       </ScrollView>
       <Divider width={1} />
       <BottomTabs />
-    </SafeAreaView>
+    </>
   )
 }
