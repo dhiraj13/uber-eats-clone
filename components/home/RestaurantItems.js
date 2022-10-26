@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { FlatList, ScrollView } from 'react-native-gesture-handler'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { windowWidth } from '../utils/constants'
+import { windowWidth } from '../../utils/constants'
 
 export default function RestaurantItem({ restaurantData }) {
   return (

@@ -3,13 +3,13 @@ import { ScrollView, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Divider } from '@rneui/base'
 
-import Categories from '../components/Categories'
-import HeaderTabs from '../components/HeaderTabs'
-import RestaurantItems from '../components/RestaurantItems'
-import SearchBar from '../components/SearchBar'
-import { localRestaurants } from '../db/localRestaurants'
 import config from '../config'
-import BottomTabs from '../components/BottomTabs'
+import Categories from '../components/home/Categories'
+import HeaderTabs from '../components/home/HeaderTabs'
+import RestaurantItems from '../components/home/RestaurantItems'
+import SearchBar from '../components/home/SearchBar'
+import BottomTabs from '../components/home/BottomTabs'
+import { localRestaurants } from '../db/localRestaurants'
 
 export default function Home() {
   const [restaurantData, setRestaurantData] = useState(localRestaurants)
