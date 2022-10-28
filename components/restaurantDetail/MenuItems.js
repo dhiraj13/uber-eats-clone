@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { Divider } from '@rneui/base'
+import BouncyCheckbox from 'react-native-bouncy-checkbox'
 
 import { windowWidth } from '../../utils/constants'
 
@@ -59,6 +60,17 @@ export default function MenuItems() {
       renderItem={({ item }) => (
         <View key={item.id}>
           <View style={styles.menuItemStyle}>
+            <BouncyCheckbox
+              innerIconStyle={{
+                borderColor: 'lightgray',
+                borderRadius: 0,
+              }}
+              iconStyle={{
+                borderColor: 'lightgray',
+                borderRadius: 0,
+              }}
+              fillColor='green'
+            />
             <FoodInfo food={item} />
             <FoodImage food={item} />
           </View>
