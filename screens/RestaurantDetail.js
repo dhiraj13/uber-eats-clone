@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 
 import About from '../components/restaurantDetail/About'
 import MenuItems from '../components/restaurantDetail/MenuItems'
-import ViewCart from './ViewCart'
+import ViewCart from '../components/restaurantDetail/ViewCart'
 
 export default function RestaurantDetail({ route, navigation }) {
   return (
@@ -12,7 +12,7 @@ export default function RestaurantDetail({ route, navigation }) {
       <About route={route} />
       <Divider width={1.8} style={{ marginVertical: 20 }} />
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <MenuItems />
+        <MenuItems restaurantName={route.params.name} />
       </ScrollView>
       <ViewCart navigation={navigation} restaurantName={route.params.name} />
     </>

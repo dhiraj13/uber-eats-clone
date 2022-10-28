@@ -3,8 +3,10 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { Divider } from '@rneui/base'
 import BouncyCheckbox from 'react-native-bouncy-checkbox'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { windowWidth } from '../../utils/constants'
+import { ADD_TO_CART } from '../../redux/reducers/constants'
 
 const foods = [
   {
@@ -52,7 +54,22 @@ const styles = StyleSheet.create({
   },
 })
 
-export default function MenuItems() {
+export default function MenuItems({ restaurantName }) {
+  const dispatch = useDispatch()
+
+  const selectItem = (item, checkboxValue) =>
+    dispatch({
+      type: ADD_TO_CART,
+      payload: { ...item, restaurantName, checkboxValue },
+    })
+
+  const cartItems = useSelector(
+    (state) => state.cartReducer.selectedItems.items
+  )
+
+  const isFoodInCart = (food, cartItems) =>
+    Boolean(cartItems.find((item) => item.title === food.title))
+
   return (
     <FlatList
       keyExtractor={(item) => item.id}
@@ -70,6 +87,8 @@ export default function MenuItems() {
                 borderRadius: 0,
               }}
               fillColor='green'
+              onPress={(checkboxValue) => selectItem(item, checkboxValue)}
+              isChecked={isFoodInCart(item, cartItems)}
             />
             <FoodInfo food={item} />
             <FoodImage food={item} />
