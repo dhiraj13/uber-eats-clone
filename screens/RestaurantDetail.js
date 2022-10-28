@@ -5,10 +5,10 @@ import { ScrollView } from 'react-native-gesture-handler'
 import About from '../components/restaurantDetail/About'
 import MenuItems from '../components/restaurantDetail/MenuItems'
 
-export default function RestaurantDetail() {
+export default function RestaurantDetail({ route }) {
   return (
     <>
-      <About />
+      <About route={route} />
       <Divider width={1.8} style={{ marginVertical: 20 }} />
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <MenuItems />

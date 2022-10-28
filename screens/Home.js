@@ -10,7 +10,7 @@ import SearchBar from '../components/home/SearchBar'
 import BottomTabs from '../components/home/BottomTabs'
 import { localRestaurants } from '../db/localRestaurants'
 
-export default function Home() {
+export default function Home({ navigation }) {
   const [restaurantData, setRestaurantData] = useState(localRestaurants)
   const [city, setCity] = useState('San Francisco')
   const [activeTab, setActiveTab] = useState('Delivery')
@@ -48,7 +48,10 @@ export default function Home() {
       <ScrollView showsVerticalScrollIndicator={false}>
         <Categories />
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <RestaurantItems restaurantData={restaurantData} />
+          <RestaurantItems
+            navigation={navigation}
+            restaurantData={restaurantData}
+          />
         </ScrollView>
       </ScrollView>
       <Divider width={1} />

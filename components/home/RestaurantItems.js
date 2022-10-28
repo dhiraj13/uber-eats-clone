@@ -1,30 +1,45 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import { FlatList, ScrollView } from 'react-native-gesture-handler'
+import { FlatList } from 'react-native-gesture-handler'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { windowWidth } from '../../utils/constants'
 
-export default function RestaurantItem({ restaurantData }) {
+export default function RestaurantItems({ navigation, restaurantData }) {
   return (
-    <TouchableOpacity activeOpacity={1} style={{ width: windowWidth }}>
+    <View style={{ width: windowWidth }}>
       <FlatList
         data={restaurantData}
         renderItem={({ item }) => (
-          <View
-            style={{
-              marginTop: 10,
-              padding: 15,
-              backgroundColor: 'white',
-            }}
+          <TouchableOpacity
+            activeOpacity={1}
+            style={{ marginBottom: 30 }}
+            onPress={() =>
+              navigation.navigate('RestaurantDetail', {
+                name: item.name,
+                image: item.image_url,
+                price: item.price,
+                reviews: item.review_count,
+                rating: item.rating,
+                categories: item.categories,
+              })
+            }
           >
-            <RestaurantImage image={item.image_url} />
-            <RestaurantInfo name={item.name} rating={item.rating} />
-          </View>
+            <View
+              style={{
+                marginTop: 10,
+                padding: 15,
+                backgroundColor: 'white',
+              }}
+            >
+              <RestaurantImage image={item.image_url} />
+              <RestaurantInfo name={item.name} rating={item.rating} />
+            </View>
+          </TouchableOpacity>
         )}
         keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
       />
-    </TouchableOpacity>
+    </View>
   )
 }
 
